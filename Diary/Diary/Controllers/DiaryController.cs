@@ -2,7 +2,7 @@
 
 namespace DiaryMVC.Controllers
 {
-    public class HomeController : Controller
+    public class DiaryController : Controller
     {
         public ActionResult Index()
         {
