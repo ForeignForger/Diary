@@ -25,7 +25,8 @@ namespace DiaryMvc.Mappers
                 //TODO: should convert time to the time on the client maybe?
                 DateTime = noteData.DateTime,
                 DueDateTime = noteData.DueDateTime,
-                Place = noteData.Place
+                Place = noteData.Place,
+                Done = noteData.Done
             };
 
             return note;
