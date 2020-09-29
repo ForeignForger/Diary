@@ -4,6 +4,8 @@ namespace DiaryDAL.Entities
 {
     public class DiaryDbContext : DbContext
     {
+        public DiaryDbContext() : base() { }
+
         public DiaryDbContext(string connection) : base(connection) {}
 
         public DbSet<Note> Notes { get; set; }

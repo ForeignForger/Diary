@@ -1,9 +1,9 @@
 ﻿using DiaryDAL.Entities;
 using System.Collections.Generic;
 
-namespace DiaryDAL.Repositories
+namespace DiaryMVC.Services
 {
-    public interface INoteRepository
+    public interface INoteService
     {
         List<Note> GetNotes();
     }
