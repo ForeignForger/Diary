@@ -8,36 +8,18 @@ namespace DiaryDAL.Repositories
 {
     public class NoteRepository : INoteRepository
     {
-        private readonly string _connection;
+        private readonly DiaryDbContext _context;
 
-        public NoteRepository(string connection)
+        public NoteRepository(DiaryDbContext context)
         {
-            _connection = connection;
+            _context = context;
         }
 
         List<Note> INoteRepository.GetNotes()
         {
-            List<Note> notes;
-
-            using (var context = CreateContext())
-            {
-                notes = context.Notes.ToList();
-            }
+            var notes = _context.Notes.ToList();
 
             return notes;
-        }
-
-        //TODO move all datacontext settings and creating to separate place, maybe IoC
-        private DiaryDbContext CreateContext()
-        {
-            var context = new DiaryDbContext(_connection);
-
-#if DEBUG
-            var initializer = new DiaryDbDebugInitializer();
-            Database.SetInitializer<DiaryDbContext>(initializer);
-            context.Database.Initialize(false);
-#endif
-            return context;
         }
     }
 }
