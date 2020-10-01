@@ -2,12 +2,15 @@
 using DiaryDAL.Entities;
 using DiaryDAL.Repositories;
 using DiaryDAL.Strategies.InitializationStrategies;
+using System.Configuration;
 using System.Data.Entity;
 
 namespace DiaryMVC.IoC.Modules
 {
     public class DalModule: Module
     {
+        private const string DiaryDbConnectionName = "DiaryDbConncection";
+
         protected override void Load(ContainerBuilder builder)
         {
             builder.Register(CreateNoteRepository).As<INoteRepository>();
@@ -30,8 +33,7 @@ namespace DiaryMVC.IoC.Modules
 
         private string GetConnection()
         {
-            // TODO get from web config
-            var connection = "vladSidorovDiaryDb";
+            var connection = ConfigurationManager.AppSettings[DiaryDbConnectionName];
             return connection;
         }
     }

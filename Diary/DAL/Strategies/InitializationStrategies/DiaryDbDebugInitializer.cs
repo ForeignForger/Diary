@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace DiaryDAL.Strategies.InitializationStrategies
 {
-    public class DiaryDbDebugInitializer: DropCreateDatabaseAlways<DiaryDbContext>
+    public class DiaryDbDebugInitializer: DropCreateDatabaseIfModelChanges<DiaryDbContext>
     {
         protected override void Seed(DiaryDbContext context)
         {
