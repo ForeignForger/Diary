@@ -123,6 +123,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\js\diary\diary.js" />
+    <Content Include="Content\js\libraries\jquery.min.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -150,6 +152,7 @@
     <Content Include="Views\Diary\Index.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Diary\Controls.cshtml" />
+    <Content Include="Views\Shared\Diary\ListMode.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

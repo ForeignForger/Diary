@@ -18,5 +18,12 @@ namespace DiaryMVC.Controllers
         {
             return View();
         }
+
+        //TODO add filtering here?
+        public ActionResult GetDiaryContent(string mode)
+        {
+            ViewData["mode"] = mode;
+            return PartialView("Diary/ListMode");
+        }
     }
 }

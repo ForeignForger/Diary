@@ -1,8 +1,12 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<style>
-</style>
+
+@section scripts{
+    <!--TODO move to bundle maybe-->
+    <script src="@Url.Content("Content/js/diary/diary.js")"></script>
+}
+
 <div class="diary">
     <div class="diary-header">My cool diary</div>
     <div class="diary-body">
@@ -12,4 +16,8 @@
         </div>
     </div>
 </div>
+<script>
+    var diary = new Diary("list-mode", "diary-content");
+    diary.init();
+</script>
 
