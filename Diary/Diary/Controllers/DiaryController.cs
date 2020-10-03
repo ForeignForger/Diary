@@ -1,5 +1,4 @@
-﻿using DiaryDAL.Repositories;
-using DiaryMvc.Mappers;
+﻿using DiaryMVC.Mappers;
 using DiaryMVC.Models;
 using DiaryMVC.Services;
 using System.Web.Mvc;
@@ -20,7 +19,7 @@ namespace DiaryMVC.Controllers
             var noteDatas = _noteService.GetNotes();
             var noteModels = NoteMapper.Map(noteDatas);
 
-            var diaryModel = new Diary()
+            var diaryModel = new DiaryModel()
             {
                 Notes = noteModels
             };

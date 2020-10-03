@@ -1,24 +1,24 @@
-﻿using System;
-using NoteTypeModel = DiaryMVC.Models.NoteType;
-using NoteTypeData = DiaryDAL.Entities.NoteType;
+﻿using DiaryDAL.Entities;
+using DiaryMVC.Models;
+using System;
 
 namespace DiaryMVC.Mappers
 {
     public class NoteTypeMapper
     {
-        public static NoteTypeModel Map(NoteTypeData data)
+        public static NoteTypeModel Map(NoteType data)
         {
             NoteTypeModel model;
 
             switch (data)
             {
-                case NoteTypeData.Memo:
+                case NoteType.Memo:
                         model = NoteTypeModel.Memo;
                         break;
-                case NoteTypeData.Meeting:
+                case NoteType.Meeting:
                         model = NoteTypeModel.Meeting;
                         break;
-                case NoteTypeData.Task:
+                case NoteType.Task:
                         model = NoteTypeModel.Task;
                         break;
                 default:

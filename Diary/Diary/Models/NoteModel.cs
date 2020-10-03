@@ -3,14 +3,14 @@
 namespace DiaryMVC.Models
 {
     //TODO: validation
-    public class Note
+    public class NoteModel
     {
         //todo: should be nullable??
         public int Id { get; set; }
 
         public string Title { get; set; }
 
-        public NoteType Type { get; set; }
+        public NoteTypeModel Type { get; set; }
 
         public DateTime DateTime { get; set; }
 

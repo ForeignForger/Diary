@@ -137,9 +137,9 @@
     <Compile Include="IoC\Modules\MvcModule.cs" />
     <Compile Include="Mappers\NoteMapper.cs" />
     <Compile Include="Mappers\NoteTypeMapper.cs" />
-    <Compile Include="Models\Diary.cs" />
-    <Compile Include="Models\Note.cs" />
-    <Compile Include="Models\NoteType.cs" />
+    <Compile Include="Models\DiaryModel.cs" />
+    <Compile Include="Models\NoteModel.cs" />
+    <Compile Include="Models\NoteTypeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\INoteService.cs" />
     <Compile Include="Services\NoteService.cs" />
