@@ -137,7 +137,6 @@
     <Compile Include="IoC\Modules\MvcModule.cs" />
     <Compile Include="Mappers\NoteMapper.cs" />
     <Compile Include="Mappers\NoteTypeMapper.cs" />
-    <Compile Include="Models\DiaryModel.cs" />
     <Compile Include="Models\NoteModel.cs" />
     <Compile Include="Models\NoteTypeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -149,6 +148,8 @@
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Diary\Index.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Diary\Controls.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

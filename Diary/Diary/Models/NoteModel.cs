@@ -5,7 +5,6 @@ namespace DiaryMVC.Models
     //TODO: validation
     public class NoteModel
     {
-        //todo: should be nullable??
         public int Id { get; set; }
 
         public string Title { get; set; }

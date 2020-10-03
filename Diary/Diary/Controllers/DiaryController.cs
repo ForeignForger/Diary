@@ -16,15 +16,7 @@ namespace DiaryMVC.Controllers
 
         public ActionResult Index()
         {
-            var noteDatas = _noteService.GetNotes();
-            var noteModels = NoteMapper.Map(noteDatas);
-
-            var diaryModel = new DiaryModel()
-            {
-                Notes = noteModels
-            };
-
-            return View(diaryModel);
+            return View();
         }
     }
 }

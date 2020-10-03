@@ -1,44 +1,15 @@
-﻿@model DiaryMVC.Models.DiaryModel
-
-@{
+﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <style>
-    table, tr, th, td {
-        border: 1px solid black;
-    }
 </style>
 <div class="diary">
     <div class="diary-header">My cool diary</div>
     <div class="diary-body">
-        <span>My notes:</span>
-        <table>
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Type</th>
-                    <th>Title</th>
-                    <th>Date</th>
-                    <th>Due to</th>
-                    <th>Place</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var note in Model.Notes)
-                {
-                <tr>
-                    <td>@note.Id</td>
-                    <td>@note.Type.Name</td>
-                    <td>@note.Title</td>
-                    <td>@note.DateTime.ToString("g")</td>
-                    <td>@(@note.DueDateTime.HasValue ? note.DueDateTime.Value.ToString("g") : "not set")</td>
-                    <td>@(String.IsNullOrEmpty(note.Place) ? "note set" : note.Place)</td>
-                    <td>@(note.Done ? "Done" : "To Do")</td>
-                </tr>
-                }
-            </tbody>
-        </table>    
+        @Html.Partial("Diary/Controls")
+        <div class="diary-content">
+            Здесь у нас будут классные заметки
+        </div>
     </div>
 </div>
 
