@@ -4,18 +4,12 @@
     <meta charset="utf-8" />
     <title>My web site</title>
     <script src="@Url.Content("Content/js/libraries/jquery.min.js")"></script>
+    @RenderSection("styles", false)
     @RenderSection("scripts", false)
-    @RenderSection("styles", false);
 </head>
     <body>
-        <header>
-            <p>cool header</p>
-        </header>
         <div class="container body-content">
             @RenderBody()
-        </div>
-        <footer>
-            <p>cool footer</p>
-        </footer>    
+        </div>  
     </body>
 </html>

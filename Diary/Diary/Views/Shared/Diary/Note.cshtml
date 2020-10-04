@@ -1,0 +1,23 @@
+﻿@model DiaryMVC.Models.NoteModel
+
+<div class="note-container  @(@Model.Type.Name)">
+    <div class="note-header">
+        <!--TODO use key in class?-->
+        <span class="note-type">@Model.Type.Name</span>
+    </div>
+    <div class="note-content">
+        <span class="note-title">Title: '@Model.Title'</span>
+        <span class="note-date">Date: @Model.DateTime.ToString("R")</span>
+        <!--TODO use other method to check type-->
+        @if (Model.Type.Name != DiaryMVC.Models.NoteTypeModel.Memo.Name)
+        {
+            <span class="note-due-date">Due: @Model.DueDateTime.Value.ToString("R")</span>
+        }
+
+        @if (Model.Type.Name == DiaryMVC.Models.NoteTypeModel.Meeting.Name)
+        {
+            <span class="note-place">Place: @Model.Place</span>
+        }
+        <span class="note-status">Status: @(Model.Done ? "Done": "Not Done")</span>
+    </div>
+</div>

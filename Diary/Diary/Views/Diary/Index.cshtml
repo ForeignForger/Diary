@@ -2,12 +2,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section styles{
+    <!--TODO move to bundle maybe-->
+    <link rel="stylesheet" href="@Url.Content("Content/css/diary/diary.css")">
+}
 @section scripts{
     <!--TODO move to bundle maybe-->
     <script src="@Url.Content("Content/js/diary/diary.js")"></script>
 }
 
-<div class="diary">
+<div class="diary list-mode">
     <div class="diary-header">My cool diary</div>
     <div class="diary-body">
         @Html.Partial("Diary/Controls")

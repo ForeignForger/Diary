@@ -123,6 +123,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\diary\diary.css" />
     <Content Include="Content\js\diary\diary.js" />
     <Content Include="Content\js\libraries\jquery.min.js" />
     <Content Include="Global.asax" />
@@ -139,6 +140,8 @@
     <Compile Include="IoC\Modules\MvcModule.cs" />
     <Compile Include="Mappers\NoteMapper.cs" />
     <Compile Include="Mappers\NoteTypeMapper.cs" />
+    <Compile Include="Models\DiaryViewMode.cs" />
+    <Compile Include="Models\ListViewModeModel.cs" />
     <Compile Include="Models\NoteModel.cs" />
     <Compile Include="Models\NoteTypeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -152,7 +155,8 @@
     <Content Include="Views\Diary\Index.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Diary\Controls.cshtml" />
-    <Content Include="Views\Shared\Diary\ListMode.cshtml" />
+    <Content Include="Views\Shared\Diary\ViewModes\List.cshtml" />
+    <Content Include="Views\Shared\Diary\Note.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
