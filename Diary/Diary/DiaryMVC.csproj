@@ -124,6 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\diary\diary.css" />
+    <Content Include="Content\css\general.css" />
     <Content Include="Content\js\diary\diary.js" />
     <Content Include="Content\js\libraries\jquery.min.js" />
     <Content Include="Global.asax" />
