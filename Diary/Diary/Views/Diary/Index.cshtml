@@ -4,7 +4,7 @@
 
 @section styles{
     <!--TODO move to bundle maybe-->
-    <link rel="stylesheet" href="@Url.Content("Content/css/diary/diary.css")">
+    <link rel="stylesheet" href="@Url.Content("Content/css/diary/diary.min.css")">
 }
 @section scripts{
     <!--TODO move to bundle maybe-->
@@ -12,9 +12,10 @@
 }
 
 <div class="diary list-mode">
-    <div class="diary-header">My cool diary</div>
-    <div class="diary-body">
+    <div class="diary-header">
         @Html.Partial("Diary/Controls")
+    </div>
+    <div class="diary-body"> 
         <div class="diary-content">
             Здесь у нас будут классные заметки
         </div>

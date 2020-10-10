@@ -1,0 +1,28 @@
+﻿@import "diary.variables.less";
+
+.diary {
+    border: 1px solid black;
+    height: @diary-height;
+
+    &.list-mode {
+        width: @diary-list-mode-width;
+
+        .diary-header {
+            height: @diary-list-mode-header-height;
+            padding: 10px;
+            border-bottom: 1px solid black;
+
+            .controls {
+                height: 100%;
+                width: 100%;
+            }
+        }
+
+        .diary-body {
+            .diary-content {
+                height: @diary-height - @diary-list-mode-header-height;
+                width: 100%;
+            }
+        }
+    }
+}
