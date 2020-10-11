@@ -124,7 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\diary\diary.min.css" />
-    <Content Include="Content\css\general.css" />
+    <Content Include="Content\css\general.min.css" />
     <Content Include="Content\js\diary\diary.js" />
     <Content Include="Content\js\libraries\jquery.min.js" />
     <Content Include="Global.asax" />
@@ -153,6 +153,8 @@
     <Content Include="Views\web.config" />
     <Content Include="Content\less\diary\diary.less" />
     <Content Include="Content\less\diary\diary.variables.less" />
+    <Content Include="Content\less\general.less" />
+    <Content Include="Content\less\general.variables.less" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Diary\Index.cshtml" />

@@ -44,7 +44,14 @@ namespace DiaryDAL.Strategies.InitializationStrategies
                         DueDateTime = DateTime.Now.AddDays(11),
                         Place = "the best place I know",
                         Done = false
-                    }
+                    },
+                    new Note()
+                    {
+                        Title = "Don't forget the thing",
+                        Type = NoteType.Memo,
+                        DateTime = DateTime.Now.AddDays(-1),
+                        Done = true
+                    },
                 };
 
                 context.Notes.AddRange(notes);

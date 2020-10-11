@@ -1,8 +1,10 @@
-﻿@import "diary.variables.less";
+﻿@import "../general.variables.less";
+@import "diary.variables.less";
 
 .diary {
     border: 1px solid black;
     height: @diary-height;
+
 
     &.list-mode {
         width: @diary-list-mode-width;
@@ -20,8 +22,56 @@
 
         .diary-body {
             .diary-content {
-                height: @diary-height - @diary-list-mode-header-height;
+                height: @diary-height - @diary-list-mode-header-height - 2px;
                 width: 100%;
+                overflow-y: scroll;
+
+                .note-container {
+                    padding: 0 5px 0 5px;
+                    height: @diary-note-height;
+                    width: 100%;
+
+                    .note-header {
+                        width: 100%;
+                        border-bottom: 3px dotted gray;
+                        padding: 5px 0px;
+
+                        .note-title {
+                            font-weight: bold;
+                        }
+                        .note-type{
+                            float: right;
+                        }
+                    }
+
+                    .note-content {
+                        .note-field {
+                            display: block;
+                            margin-top: 5px;
+                        }
+                    }
+
+                    &.meeting {
+                        background-color: @diary-meeting-background-color;
+                    }
+
+                    &.memo {
+                        background-color: @diary-memo-background-color;
+                    }
+
+                    &.task {
+                        background-color: @diary-task-background-color;
+                    }
+                }
+
+                .list-mode {
+                    .list-content {
+                        .list-note {
+                            width: 100%;
+                            border-bottom: 1px solid black;
+                        }
+                    }
+                }
             }
         }
     }
