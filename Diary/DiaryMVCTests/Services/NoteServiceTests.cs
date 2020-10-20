@@ -18,11 +18,11 @@ namespace DiaryMVCTests.Services
             var notes = new List<Note>() { new Note() { Id = 1, Title = "test title 1" }, new Note() { Id = 2, Title = "another test title 2" } };
 
             var noteRepositoryMock = MockRepository.GenerateMock<INoteRepository>();
-            noteRepositoryMock.Expect(repo => repo.GetNotes()).Return(notes);
+            noteRepositoryMock.Expect(repo => repo.GetNotes(null, null, NoteType.None)).Return(notes);
 
             INoteService noteService = new NoteService(noteRepositoryMock);
 
-            var resultNotes = noteService.GetNotes();
+            var resultNotes = noteService.GetNotes(null, null, new List<NoteTypeModel>());
 
             Assert.AreEqual(notes, resultNotes, "should return correct notes");
             noteRepositoryMock.VerifyAllExpectations();

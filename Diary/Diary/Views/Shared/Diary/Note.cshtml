@@ -1,19 +1,21 @@
-﻿@model DiaryMVC.Models.NoteModel
+﻿@using DiaryMVC.Models;
 
-<div class="note-container  @(@Model.Type.Name.ToLower())">
+@model NoteModel
+
+<div class="note-container  @(@Model.Type.ToString().ToLower())">
     <div class="note-header">
         <!--TODO use key in class?-->
-        <span class="note-type">@Model.Type.Name</span><span class="note-title">@Model.Title</span>
+        <span class="note-type">@Model.Type</span><span class="note-title">@Model.Title</span>
     </div>
     <div class="note-content">        
         <span class="note-field note-date">Date: @Model.DateTime.ToString("R")</span>
         <!--TODO use other method to check type-->
-        @if (Model.Type.Name != DiaryMVC.Models.NoteTypeModel.Memo.Name)
+        @if (!Model.Type.Equals(NoteTypeModel.Memo))
         {
             <span class="note-field note-due-date">Due to: @Model.DueDateTime.Value.ToString("R")</span>
         }
 
-        @if (Model.Type.Name == DiaryMVC.Models.NoteTypeModel.Meeting.Name)
+        @if (Model.Type.Equals(NoteTypeModel.Meeting))
         {
             <span class="note-field note-place">Place: @Model.Place</span>
         }

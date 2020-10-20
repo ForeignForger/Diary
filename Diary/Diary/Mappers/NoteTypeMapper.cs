@@ -27,5 +27,27 @@ namespace DiaryMVC.Mappers
 
             return model;
         }
+
+        public static NoteType Map(NoteTypeModel noteType)
+        {
+            NoteType data;
+
+            switch (noteType)
+            {
+                case NoteTypeModel.Memo:
+                    data = NoteType.Memo;
+                    break;
+                case NoteTypeModel.Meeting:
+                    data = NoteType.Meeting;
+                    break;
+                case NoteTypeModel.Task:
+                    data = NoteType.Task;
+                    break;
+                default:
+                    throw new ArgumentException($"Couldn't map unexpected note type model: {noteType}");
+            }
+
+            return data;
+        }
     }
 }

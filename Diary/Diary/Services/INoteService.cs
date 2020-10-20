@@ -1,12 +1,13 @@
 ﻿using DiaryDAL.Entities;
 using DiaryMVC.Models;
+using System;
 using System.Collections.Generic;
 
 namespace DiaryMVC.Services
 {
     public interface INoteService
     {
-        List<Note> GetNotes();
+        List<Note> GetNotes(DateTime? from, DateTime? to, List<NoteTypeModel> noteTypes);
 
         bool CreateNote(NoteModel noteModel);
 

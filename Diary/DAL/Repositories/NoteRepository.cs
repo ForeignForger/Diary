@@ -1,5 +1,5 @@
 ﻿using DiaryDAL.Entities;
-using DiaryDAL.Strategies.InitializationStrategies;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -15,11 +15,27 @@ namespace DiaryDAL.Repositories
             _context = context;
         }
 
-        List<Note> INoteRepository.GetNotes()
+        List<Note> INoteRepository.GetNotes(DateTime? from, DateTime? to, NoteType noteTypeMask)
         {
-            var notes = _context.Notes.ToList();
+            IQueryable<Note> notes = _context.Notes;
 
-            return notes;
+            if (from != null)
+            {
+                notes = notes.Where(note => DbFunctions.TruncateTime(note.DateTime) >= DbFunctions.TruncateTime(from.Value));
+            }
+
+            if (to != null)
+            {
+                notes = notes.Where(note => DbFunctions.TruncateTime(note.DateTime) <= DbFunctions.TruncateTime(to.Value));
+            }
+
+            if (noteTypeMask != NoteType.None)
+            {
+                notes = notes.Where(note => (note.Type & noteTypeMask) == note.Type);
+            }
+
+            var result = notes.ToList();
+            return result;
         }
 
         Note INoteRepository.CreateNote(Note note)

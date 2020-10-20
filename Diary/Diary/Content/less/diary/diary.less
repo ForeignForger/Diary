@@ -11,12 +11,58 @@
 
         .diary-header {
             height: @diary-list-mode-header-height;
-            padding: 10px;
             border-bottom: 1px solid black;
 
             .controls {
                 height: 100%;
                 width: 100%;
+
+                .modes {
+                    width: 100%;
+                    padding: 10px 0 5px 10px;
+                    border-bottom: 2px solid gray;
+                }
+
+                .filters {
+                    width: 100%;
+                    border-bottom: 2px solid gray;
+                    padding-bottom: 12px;
+
+                    .filter-from-date, .filter-to-date {
+                        height: 20px;
+                        line-height: 20px;
+                        margin-top: 12px;
+                        margin-left: 10px;
+                        width: 200px;
+
+                        span {
+                            float: left;
+                        }
+
+                        input {
+                            float: right;
+                        }
+                    }
+
+                    .filter-note-type{
+                        clear: both;
+                        margin-top: 12px;
+                        margin-left: 10px;
+
+                        .checkboxes{
+                            margin-left: 10px;
+                            margin-top: 5px;
+                        }
+                    }
+
+                    .filter-button{
+                        margin-left: 5px;
+                        margin-top: 10px;
+                        padding: 0px 10px;
+                        line-height: 20px;
+                        font-size: 15px;
+                    }
+                }
             }
         }
 
@@ -28,7 +74,7 @@
 
                 .note-container {
                     padding: 0 5px 0 5px;
-                    height: @diary-note-height;
+                    min-height: @diary-note-height;
                     width: 100%;
 
                     .note-header {
@@ -39,7 +85,8 @@
                         .note-title {
                             font-weight: bold;
                         }
-                        .note-type{
+
+                        .note-type {
                             float: right;
                         }
                     }
@@ -69,6 +116,10 @@
                         .list-note {
                             width: 100%;
                             border-bottom: 1px solid black;
+
+                            &:last-of-type {
+                                border-bottom: 0px;
+                            }
                         }
                     }
                 }

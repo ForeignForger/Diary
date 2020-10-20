@@ -1,8 +1,10 @@
 ﻿using DiaryDAL.Entities;
 using DiaryDAL.Repositories;
+using DiaryMVC.Mappers;
 using DiaryMVC.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DiaryMVC.Services
 {
@@ -15,9 +17,17 @@ namespace DiaryMVC.Services
             _noteRepository = noteRepository;
             _createNoteMethods = new Dictionary<NoteTypeModel, Func<NoteModel, bool>>() { { NoteTypeModel.Memo, CreateMemo }, { NoteTypeModel.Task, CreateTask }, { NoteTypeModel.Meeting, CreateMeeting } };
         }
-        List<Note> INoteService.GetNotes()
+        List<Note> INoteService.GetNotes(DateTime? from, DateTime? to, List<NoteTypeModel> noteTypes)
         {
-            var notes = _noteRepository.GetNotes();
+            var noteTypeDatas = noteTypes.Select(type => NoteTypeMapper.Map(type)).ToList();
+            NoteType noteTypeMask = NoteType.None;
+
+            foreach (var noteType in noteTypeDatas)
+            {
+                noteTypeMask |= noteType;
+            }
+
+            var notes = _noteRepository.GetNotes(from, to, noteTypeMask);
             return notes;
         }
 

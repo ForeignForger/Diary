@@ -1,6 +1,9 @@
 ﻿using DiaryMVC.Mappers;
 using DiaryMVC.Models;
 using DiaryMVC.Services;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace DiaryMVC.Controllers
@@ -19,17 +22,22 @@ namespace DiaryMVC.Controllers
             return View();
         }
 
-        //TODO add filtering here?
-        public ActionResult GetDiaryContent(string mode)
+        [HttpPost]
+        public ActionResult GetDiaryContent(string mode, string from, string to, List<string> noteTypes)
         {
             ActionResult result;
             var viewMode = DiaryViewMode.GetMode(mode);
 
             if (viewMode != null)
             {
+                DateTime? fromDate = string.IsNullOrEmpty(from) ? (DateTime?)null : DateTime.Parse(from);
+                DateTime? toDate = string.IsNullOrEmpty(to) ? (DateTime?)null : DateTime.Parse(to);
+                noteTypes = noteTypes == null ? new List<string>() : noteTypes;
+                var noteTypeModels = noteTypes.Select(type => (NoteTypeModel)Enum.Parse(typeof(NoteTypeModel), type, true)).ToList();
+
                 if (viewMode.Equals(DiaryViewMode.List))
                 {
-                    result = RenderListView();
+                    result = RenderListView(fromDate, toDate, noteTypeModels);
                 }
                 else
                 {
@@ -45,9 +53,10 @@ namespace DiaryMVC.Controllers
             return result;
         }
 
-        private ActionResult RenderListView()
+        private ActionResult RenderListView(DateTime? from, DateTime? to, List<NoteTypeModel> noteTypes)
         {
-            var notes = _noteService.GetNotes();
+            var notes = _noteService.GetNotes(from, to, noteTypes);
+            notes = notes.OrderBy(note => note.DateTime).ToList();
             var noteModels = NoteMapper.Map(notes);
             var list = new ListViewModeModel()
             {

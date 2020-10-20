@@ -1,12 +1,31 @@
 ﻿<div class="controls">
     <div class="modes">
-        <span>Список</span>
-        <span>День</span>
-        <span>Неделя</span>
-        <span>Месяц</span>
+        <select name="view-mode-select" id="view-mode-select">
+            <option value="list-mode">List</option>
+            <option value="day-mode">Day</option>
+            <option value="week-mode">Week</option>
+            <option value="month-mode">Month</option>
+        </select>
     </div>
-    <div class="filter">
-        мои крутые фильтры которые будут работать через ajax запросы
+    <div class="filters">
+        <div class="filter-from-date">
+            <span>From:</span><input type="date" id="from-date" value="">
+        </div>
+        <div class="filter-to-date">
+            <span>To:</span><input type="date" id="to-date" value="">
+        </div>
+        <div class="filter-note-type">
+            <span>Note Types:</span><br/>
+            <div class="checkboxes">
+                <input type="checkbox" name="note-types" value="memo" />
+                <label>Memo</label>
+                <input type="checkbox" name="note-types" value="task" />
+                <label>Task</label>
+                <input type="checkbox" name="note-types" value="meeting" />
+                <label>Meeting</label>
+            </div>           
+        </div>
+        <button class="filter-button">Filter</button>
     </div>
     <div class="actions">
         <span class="create-memo-button">Создать памятку</span>
