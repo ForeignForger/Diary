@@ -1,4 +1,6 @@
-﻿@{
+﻿@using DiaryMVC.Models;
+
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -9,20 +11,20 @@
 @section scripts{
     <!--TODO move to bundle maybe-->
     <script src="@Url.Content("Content/js/diary/diary.js")"></script>
+    <script src="@Url.Content("Content/js/diary/noteService.js")"></script>
 }
 
-<div class="diary list-mode">
+<div class="diary @DiaryViewMode.List.Key">
     <div class="diary-header">
         @Html.Partial("Diary/Controls")
     </div>
-    <div class="diary-body"> 
+    <div class="diary-body">
         <div class="diary-content">
-            Здесь у нас будут классные заметки
         </div>
     </div>
 </div>
 <script>
-    var diary = new Diary("list-mode", ".diary", ".diary .diary-content");
+    var diary = new Diary("@DiaryViewMode.List.Key", ".diary", ".diary .diary-content");
     diary.init();
 </script>
 

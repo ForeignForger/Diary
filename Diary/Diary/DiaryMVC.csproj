@@ -126,6 +126,7 @@
     <Content Include="Content\css\diary\diary.min.css" />
     <Content Include="Content\css\general.min.css" />
     <Content Include="Content\js\diary\diary.js" />
+    <Content Include="Content\js\diary\noteService.js" />
     <Content Include="Content\js\libraries\jquery.min.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -133,6 +134,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DiaryController.cs" />
+    <Compile Include="Controllers\NoteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -171,6 +173,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Note\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DiaryDAL.csproj">

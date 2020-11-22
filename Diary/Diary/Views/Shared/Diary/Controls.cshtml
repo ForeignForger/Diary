@@ -1,7 +1,9 @@
-﻿<div class="controls">
+﻿@using DiaryMVC.Models;
+
+<div class="controls">
     <div class="modes">
         <select name="view-mode-select" id="view-mode-select">
-            <option value="list-mode">List</option>
+            <option value="@DiaryViewMode.List.Key">List</option>
             <option value="day-mode">Day</option>
             <option value="week-mode">Week</option>
             <option value="month-mode">Month</option>
@@ -28,8 +30,8 @@
         <button class="filter-button">Filter</button>
     </div>
     <div class="actions">
-        <span class="create-memo-button">Создать памятку</span>
-        <span class="create-task-button">Создать задачу</span>
-        <span class="create-meeting-button">Создать встречу</span>
+        <span class="memo-create-button">Создать памятку</span>
+        <span class="task-create-button">Создать задачу</span>
+        <span class="meeting-create-button">Создать встречу</span>
     </div>
 </div>

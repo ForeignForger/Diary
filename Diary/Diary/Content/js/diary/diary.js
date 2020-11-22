@@ -9,7 +9,9 @@
         diaryContainer: diaryContainer,
         contentContainer: contentContainer,
         url: "Diary/GetDiaryContent"
-    }
+    };
+
+    var noteService = new NoteService();
 
     function init() {
         initViewModeSelection();
@@ -18,7 +20,7 @@
     }
 
     function initViewModeSelection() {
-        $('#view-mode-select').on('change', function (e) {
+        $('#view-mode-select').change(function () {
             var optionSelected = $("option:selected", this);
             var newMode = optionSelected[0].value;
             var oldMode = settings.viewMode;           
@@ -77,7 +79,7 @@
             success: function (response) {
                 insertDiaryContent(response)
             },
-            fail: function () {
+            error: function () {
                 alert('Couldn\'t change view mode!');
             }
         });
@@ -85,6 +87,17 @@
 
     function insertDiaryContent(html) {
         $(settings.contentContainer).html(html);
+
+        $(".note-delete-button").click(function () {
+            var id = $(this).attr("data-id");
+            var onSuccess = loadDiary;
+
+            var onFail = function () {
+                alert("Couldn't delete note!");
+            };
+
+            noteService.deleteNote(id, onSuccess, onFail);
+        });
     }
 
     return {

@@ -42,7 +42,9 @@ namespace DiaryMVC.Services
 
         bool INoteService.DeleteNote(int id)
         {
-            throw new System.NotImplementedException();
+            var result = _noteRepository.DeleteNote(id);
+
+            return result;
         }
 
         bool INoteService.UpdateNote(NoteModel noteModel)
