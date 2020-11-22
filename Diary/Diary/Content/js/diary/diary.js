@@ -20,7 +20,7 @@
     }
 
     function initViewModeSelection() {
-        $('#view-mode-select').change(function () {
+        $("#view-mode-select").change(function () {
             var optionSelected = $("option:selected", this);
             var newMode = optionSelected[0].value;
             var oldMode = settings.viewMode;           
@@ -80,7 +80,7 @@
                 insertDiaryContent(response)
             },
             error: function () {
-                alert('Couldn\'t change view mode!');
+                alert("Couldn't change view mode!");
             }
         });
     }
@@ -97,6 +97,18 @@
             };
 
             noteService.deleteNote(id, onSuccess, onFail);
+        });
+
+        $(".note-set_status-button").click(function () {
+            var id = $(this).attr("data-id");
+            var status = $(this).attr("data-status");
+            var onSuccess = loadDiary;
+
+            var onFail = function () {
+                alert("Couldn't update status!");
+            };
+
+            noteService.setStatus(id, status, onSuccess, onFail);
         });
     }
 

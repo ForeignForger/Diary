@@ -55,8 +55,9 @@ namespace DiaryMVC.Services
 
         bool INoteService.SetNoteStatus(int id, bool done)
         {
-            //TODO
-            throw new System.NotImplementedException();
+            var result = _noteRepository.SetNoteStatus(id, done);
+
+            return result;
         }
 
         private bool CreateMemo(NoteModel noteModel)

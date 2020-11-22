@@ -32,11 +32,11 @@ namespace DiaryMVC.Controllers
             return result;
         }
 
-        public HttpStatusCodeResult SetNoteStatus(int noteId, bool done)
+        public HttpStatusCodeResult SetStatus(int noteId, bool status)
         {
             HttpStatusCodeResult result;
 
-            var foundAndUpdated = _noteService.SetNoteStatus(noteId, done);
+            var foundAndUpdated = _noteService.SetNoteStatus(noteId, status);
 
             if (foundAndUpdated)
             {

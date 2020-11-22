@@ -76,6 +76,7 @@ namespace DiaryDAL.Repositories
                 existingNote.DateTime = note.DateTime;
                 existingNote.DueDateTime = note.DueDateTime;
                 existingNote.Place = note.Place;
+                _context.SaveChanges();
 
                 updated = true;
             }
@@ -96,6 +97,7 @@ namespace DiaryDAL.Repositories
             if (existingNote != null)
             {
                 existingNote.Done = done;
+                _context.SaveChanges();
                 updated = true;
             }
             else

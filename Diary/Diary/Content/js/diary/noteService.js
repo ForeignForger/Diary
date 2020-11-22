@@ -1,6 +1,7 @@
 ﻿NoteService = function () {
     var urls = {
-        delete: "Note/Delete"
+        delete: "Note/Delete",
+        setStatus: "Note/SetStatus"
     };
 
     function deleteNote(id, onSuccess, onFail) {
@@ -19,7 +20,25 @@
         });
     }
 
+    function setStatus(id, status, onSuccess, onFail) {
+        $.ajax({
+            url: urls.setStatus,
+            type: "GET",
+            data: {
+                noteId: id,
+                status: status
+            },
+            success: function (response) {
+                onSuccess(response);
+            },
+            error: function () {
+                onFail();
+            }
+        });
+    }
+
     return {
-        deleteNote: deleteNote
+        deleteNote: deleteNote,
+        setStatus: setStatus
     };
 }
