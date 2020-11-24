@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
-namespace DiaryDAL.Repositories
+namespace DiaryDAL.Repositories.Impl
 {
     public class NoteRepository : INoteRepository
     {
@@ -15,7 +15,7 @@ namespace DiaryDAL.Repositories
             _context = context;
         }
 
-        List<Note> INoteRepository.GetNotes(DateTime? from, DateTime? to, NoteType noteTypeMask)
+        List<Note> INoteRepository.GetAll(DateTime? from, DateTime? to, NoteType noteTypeMask)
         {
             IQueryable<Note> notes = _context.Notes;
 
@@ -38,14 +38,14 @@ namespace DiaryDAL.Repositories
             return result;
         }
 
-        Note INoteRepository.CreateNote(Note note)
+        Note INoteRepository.Create(Note note)
         {
             var newNote = _context.Notes.Add(note);
             _context.SaveChanges();
             return newNote;
         }
 
-        bool INoteRepository.DeleteNote(int id)
+        bool INoteRepository.Delete(int id)
         {
             bool deleted;
             var note = _context.Notes.Find(id);
@@ -64,7 +64,7 @@ namespace DiaryDAL.Repositories
             return deleted;
         }
 
-        bool INoteRepository.UpdateNote(Note note)
+        bool INoteRepository.Update(Note note)
         {
             bool updated;
 
@@ -88,7 +88,7 @@ namespace DiaryDAL.Repositories
             return updated;
         }
 
-        bool INoteRepository.SetNoteStatus(int id, bool done)
+        bool INoteRepository.SetStatus(int id, bool done)
         {
             bool updated;
 

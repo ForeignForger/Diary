@@ -6,14 +6,14 @@ namespace DiaryDAL.Repositories
 {
     public interface INoteRepository
     {
-        List<Note> GetNotes(DateTime? from, DateTime? to, NoteType noteTypeMask);
+        List<Note> GetAll(DateTime? from, DateTime? to, NoteType noteTypeMask);
 
-        Note CreateNote(Note note);
+        Note Create(Note note);
 
-        bool DeleteNote(int id);
+        bool Delete(int id);
 
-        bool UpdateNote(Note note);
+        bool Update(Note note);
 
-        bool SetNoteStatus(int id, bool done);
+        bool SetStatus(int id, bool done);
     }
 }

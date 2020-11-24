@@ -55,7 +55,7 @@ namespace DiaryMVC.Controllers
 
         private ActionResult RenderListView(DateTime? from, DateTime? to, List<NoteTypeModel> noteTypes)
         {
-            var notes = _noteService.GetNotes(from, to, noteTypes);
+            var notes = _noteService.GetAll(from, to, noteTypes);
             notes = notes.OrderBy(note => note.DateTime).ToList();
             var noteModels = NoteMapper.Map(notes);
             var list = new ListViewModeModel()

@@ -2,6 +2,7 @@
 using DiaryDAL.Repositories;
 using DiaryMVC.Models;
 using DiaryMVC.Services;
+using DiaryMVC.Services.Impl;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Rhino.Mocks;
 using System;
@@ -18,77 +19,44 @@ namespace DiaryMVCTests.Services
             var notes = new List<Note>() { new Note() { Id = 1, Title = "test title 1" }, new Note() { Id = 2, Title = "another test title 2" } };
 
             var noteRepositoryMock = MockRepository.GenerateMock<INoteRepository>();
-            noteRepositoryMock.Expect(repo => repo.GetNotes(null, null, NoteType.None)).Return(notes);
+            noteRepositoryMock.Expect(repo => repo.GetAll(null, null, NoteType.None)).Return(notes);
 
             INoteService noteService = new NoteService(noteRepositoryMock);
 
-            var resultNotes = noteService.GetNotes(null, null, new List<NoteTypeModel>());
+            var resultNotes = noteService.GetAll(null, null, new List<NoteTypeModel>());
 
             Assert.AreEqual(notes, resultNotes, "should return correct notes");
             noteRepositoryMock.VerifyAllExpectations();
         }
 
         [TestMethod]
-        public void ShouldCreateMemo()
+        public void ShouldDeleteNote()
         {
-            var noteModel = new NoteModel()
-            {
-                Title = "title",
-                Type = NoteTypeModel.Memo,
-                DateTime = DateTime.UtcNow,            
-            };
+            var id = 1;
 
             var noteRepositoryMock = MockRepository.GenerateMock<INoteRepository>();
-            noteRepositoryMock.Expect(repo => repo.CreateNote(Arg<Note>.Matches( x => x.Type == NoteType.Memo))).Return(null);
+            noteRepositoryMock.Expect(repo => repo.Delete(id)).Return(true);
 
             INoteService noteService = new NoteService(noteRepositoryMock);
 
-            var result = noteService.CreateNote(noteModel);
+            var result = noteService.Delete(id);
 
             Assert.IsTrue(result);
             noteRepositoryMock.VerifyAllExpectations();
         }
 
         [TestMethod]
-        public void ShouldCreateTask()
+        public void ShouldSetNoteStatus()
         {
-            var noteModel = new NoteModel()
-            {
-                Title = "title",
-                Type = NoteTypeModel.Task,
-                DateTime = DateTime.UtcNow,
-                DueDateTime = DateTime.Now,
-            };
+            var id = 1;
+            var status = true;
 
             var noteRepositoryMock = MockRepository.GenerateMock<INoteRepository>();
-            noteRepositoryMock.Expect(repo => repo.CreateNote(Arg<Note>.Matches(x => x.Type == NoteType.Task))).Return(null);
+            noteRepositoryMock.Expect(repo => repo.SetStatus(id, status)).Return(true);
 
             INoteService noteService = new NoteService(noteRepositoryMock);
 
-            var result = noteService.CreateNote(noteModel);
-
-            Assert.IsTrue(result);
-            noteRepositoryMock.VerifyAllExpectations();
-        }
-
-        [TestMethod]
-        public void ShouldCreateMeeting()
-        {
-            var noteModel = new NoteModel()
-            {
-                Title = "title",
-                Type = NoteTypeModel.Meeting,
-                DateTime = DateTime.UtcNow,
-                DueDateTime = DateTime.Now,
-                Place = "cool place",
-            };
-
-            var noteRepositoryMock = MockRepository.GenerateMock<INoteRepository>();
-            noteRepositoryMock.Expect(repo => repo.CreateNote(Arg<Note>.Matches(x => x.Type == NoteType.Meeting))).Return(null);
-
-            INoteService noteService = new NoteService(noteRepositoryMock);
-
-            var result = noteService.CreateNote(noteModel);
+            var result = noteService.SetStatus(id, status);
 
             Assert.IsTrue(result);
             noteRepositoryMock.VerifyAllExpectations();

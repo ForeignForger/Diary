@@ -7,14 +7,28 @@ namespace DiaryMVC.Services
 {
     public interface INoteService
     {
-        List<Note> GetNotes(DateTime? from, DateTime? to, List<NoteTypeModel> noteTypes);
+        /// <summary>
+        /// Gets all notes and filters them
+        /// </summary>
+        /// <param name="from">min date of notes to return (time is ignored)</param>
+        /// <param name="to">max date of notes to return (time is ignored)</param>
+        /// <param name="noteTypes">note types to return(empty list equals All types)</param>
+        /// <returns></returns>
+        List<Note> GetAll(DateTime? from, DateTime? to, List<NoteTypeModel> noteTypes);
 
-        bool CreateNote(NoteModel noteModel);
+        /// <summary>
+        /// Deletes note from database by Id
+        /// </summary>
+        /// <param name="id">note id</param>
+        /// <returns></returns>
+        bool Delete(int id);
 
-        bool DeleteNote(int id);
-
-        bool UpdateNote(NoteModel noteModel);
-
-        bool SetNoteStatus(int id, bool done);
+        /// <summary>
+        /// Set note status by id
+        /// </summary>
+        /// <param name="id">note id</param>
+        /// <param name="done">new note status</param>
+        /// <returns></returns>
+        bool SetStatus(int id, bool done);
     }
 }

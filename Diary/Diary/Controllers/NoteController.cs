@@ -4,6 +4,7 @@ using System.Web.Mvc;
 
 namespace DiaryMVC.Controllers
 {
+    //would be better to make it rest API and use ApiCOntroller, but too much work
     public class NoteController : Controller
     {
         private readonly INoteService _noteService;
@@ -18,7 +19,7 @@ namespace DiaryMVC.Controllers
         {
             HttpStatusCodeResult result;
 
-            var foundAndDeleted = _noteService.DeleteNote(noteId);
+            var foundAndDeleted = _noteService.Delete(noteId);
             
             if (foundAndDeleted)
             {
@@ -36,7 +37,7 @@ namespace DiaryMVC.Controllers
         {
             HttpStatusCodeResult result;
 
-            var foundAndUpdated = _noteService.SetNoteStatus(noteId, status);
+            var foundAndUpdated = _noteService.SetStatus(noteId, status);
 
             if (foundAndUpdated)
             {

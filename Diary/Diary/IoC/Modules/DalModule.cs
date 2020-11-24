@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using DiaryDAL.Entities;
 using DiaryDAL.Repositories;
+using DiaryDAL.Repositories.Impl;
 using DiaryDAL.Strategies.InitializationStrategies;
 using System.Configuration;
 using System.Data.Entity;
@@ -19,7 +20,6 @@ namespace DiaryMVC.IoC.Modules
         private INoteRepository CreateNoteRepository(IComponentContext componentContext)
         {
             var connection = GetConnection();
-            //TODO question, is it really okay to create one DbContext for a class? Should be, pretty sure, but hmm...
             var context = new DiaryDbContext(connection);
 
 #if DEBUG
