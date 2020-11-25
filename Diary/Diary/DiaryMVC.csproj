@@ -123,11 +123,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\css\diary\diary.min.css" />
-    <Content Include="Content\css\general.min.css" />
     <Content Include="Content\js\diary\diary.js" />
+    <Content Include="Content\js\diary\diaryPopupService.js" />
     <Content Include="Content\js\diary\noteService.js" />
     <Content Include="Content\js\libraries\jquery.min.js" />
+    <Content Include="Content\less\diary\diary.css">
+      <DependentUpon>diary.less</DependentUpon>
+    </Content>
+    <Content Include="Content\less\diary\diary.min.css">
+      <DependentUpon>diary.css</DependentUpon>
+    </Content>
+    <Content Include="Content\less\diary\diary.variables.css">
+      <DependentUpon>diary.variables.less</DependentUpon>
+    </Content>
+    <Content Include="Content\less\diary\diary.variables.min.css">
+      <DependentUpon>diary.variables.css</DependentUpon>
+    </Content>
+    <Content Include="Content\less\general.css">
+      <DependentUpon>general.less</DependentUpon>
+    </Content>
+    <Content Include="Content\less\general.min.css">
+      <DependentUpon>general.css</DependentUpon>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -166,6 +183,10 @@
     <Content Include="Content\less\diary\diary.variables.less" />
     <Content Include="Content\less\general.less" />
     <Content Include="Content\less\general.variables.less" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Diary\Index.cshtml" />

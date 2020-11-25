@@ -12,10 +12,13 @@
     };
 
     var noteService = new NoteService();
+    var popupService = new DiaryPopupService;
 
     function init() {
+        popupService.init();
         initViewModeSelection();
         initFilters();
+        initActions();
         loadDiary();
     }
 
@@ -60,6 +63,13 @@
             loadDiary();
         });
 
+    }
+
+    function initActions() {
+        $(".diary .controls .actions .note-create-button").click(function () {
+            var noteType = $(this).attr("data-type");
+            popupService.showPopup("test text open popup for " + noteType);
+        });
     }
 
     function loadDiary() {

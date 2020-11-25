@@ -1,0 +1,145 @@
+﻿.diary {
+  border: 1px solid black;
+  height: 800px;
+}
+.diary .diary-popup {
+  display: none;
+  position: absolute;
+  z-index: 2;
+  background-color: rgba(128, 128, 128, 0.5);
+}
+.diary .diary-popup.active {
+  display: block;
+}
+.diary .diary-popup .popup-content {
+  position: relative;
+  top: calc((100% - 500px) / 2);
+  left: calc((100% - 300px) / 2);
+  width: 300px;
+  height: 500px;
+  background-color: white;
+  border: 1px solid gray;
+}
+.diary .diary-popup .popup-content .controls {
+  padding: 0 5px;
+}
+.diary .diary-popup .popup-content .controls .popup-close-button {
+  float: right;
+  cursor: pointer;
+  color: gray;
+  font-weight: bold;
+  line-height: 100%;
+}
+.diary .diary-popup .popup-content .content {
+  clear: both;
+}
+.diary.list-mode {
+  width: 400px;
+}
+.diary.list-mode .diary-popup {
+  height: 798px;
+  width: 398px;
+}
+.diary.list-mode .diary-header {
+  height: 250px;
+  border-bottom: 1px solid black;
+}
+.diary.list-mode .diary-header .controls {
+  height: 100%;
+  width: 100%;
+}
+.diary.list-mode .diary-header .controls .modes {
+  width: 100%;
+  padding: 10px 0 5px 10px;
+  border-bottom: 2px solid gray;
+}
+.diary.list-mode .diary-header .controls .filters {
+  width: 100%;
+  border-bottom: 2px solid gray;
+  padding-bottom: 12px;
+}
+.diary.list-mode .diary-header .controls .filters .filter-from-date,
+.diary.list-mode .diary-header .controls .filters .filter-to-date {
+  height: 20px;
+  line-height: 20px;
+  margin-top: 12px;
+  margin-left: 10px;
+  width: 200px;
+}
+.diary.list-mode .diary-header .controls .filters .filter-from-date span,
+.diary.list-mode .diary-header .controls .filters .filter-to-date span {
+  float: left;
+}
+.diary.list-mode .diary-header .controls .filters .filter-from-date input,
+.diary.list-mode .diary-header .controls .filters .filter-to-date input {
+  float: right;
+}
+.diary.list-mode .diary-header .controls .filters .filter-note-type {
+  clear: both;
+  margin-top: 12px;
+  margin-left: 10px;
+}
+.diary.list-mode .diary-header .controls .filters .filter-note-type .checkboxes {
+  margin-left: 10px;
+  margin-top: 5px;
+}
+.diary.list-mode .diary-header .controls .filters .filter-button {
+  margin-left: 5px;
+  margin-top: 10px;
+}
+.diary.list-mode .diary-header .controls .actions {
+  padding-top: 12px;
+}
+.diary.list-mode .diary-header .controls .actions button {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.diary.list-mode .diary-body .diary-content {
+  height: 548px;
+  width: 100%;
+  overflow-y: scroll;
+}
+.diary.list-mode .diary-body .diary-content .note-container {
+  padding: 0 5px 0 5px;
+  min-height: 140px;
+  width: 100%;
+}
+.diary.list-mode .diary-body .diary-content .note-container .note-header {
+  width: 100%;
+  border-bottom: 3px dotted gray;
+  padding: 5px 0px;
+}
+.diary.list-mode .diary-body .diary-content .note-container .note-header .note-title {
+  font-weight: bold;
+}
+.diary.list-mode .diary-body .diary-content .note-container .note-header .note-type {
+  float: right;
+}
+.diary.list-mode .diary-body .diary-content .note-container .note-header .note-delete-button {
+  float: right;
+  margin-left: 10px;
+  cursor: pointer;
+  color: gray;
+  font-weight: bold;
+  line-height: 100%;
+}
+.diary.list-mode .diary-body .diary-content .note-container .note-content .note-field {
+  display: block;
+  margin-top: 5px;
+}
+.diary.list-mode .diary-body .diary-content .note-container.meeting {
+  background-color: #b3ffe0;
+}
+.diary.list-mode .diary-body .diary-content .note-container.memo {
+  background-color: #ffe6b3;
+}
+.diary.list-mode .diary-body .diary-content .note-container.task {
+  background-color: #b3ecff;
+}
+.diary.list-mode .diary-body .diary-content .list-mode .list-content .list-note {
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+.diary.list-mode .diary-body .diary-content .list-mode .list-content .list-note:last-of-type {
+  border-bottom: 0px;
+}

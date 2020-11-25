@@ -5,9 +5,51 @@
     border: 1px solid black;
     height: @diary-height;
 
+    .diary-popup {
+        display: none;
+        position: absolute;
+        z-index: 2;
+        background-color: fade(gray, 50%);
+
+        &.active {
+            display: block;
+        }
+
+        .popup-content {
+            position: relative;
+            top: calc((100% - @diary-popup-height) / 2);
+            left: calc((100% - @diary-popup-width) / 2);
+            width: @diary-popup-width;
+            height: @diary-popup-height;
+            background-color: white;
+            border: 1px solid gray;
+
+            .controls {
+                padding: 0 5px;
+
+                .popup-close-button {
+                    float: right;
+                    cursor: pointer;
+                    color: gray;
+                    font-weight: bold;
+                    line-height: 100%;
+                }
+            }
+
+            .content {
+                clear: both;
+            }
+        }
+    }
+
 
     &.list-mode {
         width: @diary-list-mode-width;
+
+        .diary-popup {
+            height: @diary-height - 2px;
+            width: @diary-list-mode-width - 2px;
+        }
 
         .diary-header {
             height: @diary-list-mode-header-height;
@@ -58,9 +100,15 @@
                     .filter-button {
                         margin-left: 5px;
                         margin-top: 10px;
-                        padding: 0px 10px;
-                        line-height: 20px;
-                        font-size: 15px;
+                    }
+                }
+
+                .actions {
+                    padding-top: 12px;
+
+                    button {
+                        margin-left: 5px;
+                        margin-right: 5px;
                     }
                 }
             }

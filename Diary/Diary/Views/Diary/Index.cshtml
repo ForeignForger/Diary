@@ -6,15 +6,26 @@
 
 @section styles{
     <!--TODO move to bundle maybe-->
-    <link rel="stylesheet" href="@Url.Content("Content/css/diary/diary.min.css")">
+    <link rel="stylesheet" href="@Url.Content("Content/less/diary/diary.min.css")">
 }
 @section scripts{
     <!--TODO move to bundle maybe-->
     <script src="@Url.Content("Content/js/diary/diary.js")"></script>
+    <script src="@Url.Content("Content/js/diary/diaryPopupService.js")"></script>
     <script src="@Url.Content("Content/js/diary/noteService.js")"></script>
 }
 
 <div class="diary @DiaryViewMode.List.Key">
+    <div class="diary-popup active">
+        <div class="popup-content">
+            <div class="controls">
+                <span class="popup-close-button">x</span>
+            </div>
+            <div class="content popup-type-class-name">
+                popup content
+            </div>
+        </div>
+    </div>
     <div class="diary-header">
         @Html.Partial("Diary/Controls")
     </div>

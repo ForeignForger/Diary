@@ -1,0 +1,14 @@
+﻿[
+  {
+    "outputFile": "Content/less/general.css",
+    "inputFile": "Content/less/general.less"
+  },
+  {
+    "outputFile": "Content/less/diary/diary.variables.css",
+    "inputFile": "Content/less/diary/diary.variables.less"
+  },
+  {
+    "outputFile": "Content/less/diary/diary.css",
+    "inputFile": "Content/less/diary/diary.less"
+  }
+]
