@@ -37,8 +37,37 @@
         });
     }
 
+    function getCreateForm(type ,onSuccess, onFail) {
+        $.ajax({
+            url: type + "/Create",
+            type: "GET",
+            success: function (response) {
+                onSuccess(response);
+            },
+            error: function () {
+                onFail();
+            }
+        });
+    }
+
+    function createNote(type, dataString, onSuccess, onFail) {
+        $.ajax({
+            url: type + "/Create",
+            type: "POST",
+            data: dataString,
+            success: function (response) {
+                onSuccess(response);
+            },
+            error: function () {
+                onFail();
+            }
+        });
+    }
+
     return {
         deleteNote: deleteNote,
-        setStatus: setStatus
+        setStatus: setStatus,
+        getCreateForm: getCreateForm,
+        createNote: createNote,
     };
 }

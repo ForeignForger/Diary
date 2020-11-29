@@ -1,1 +1,1 @@
-﻿*{box-sizing:border-box;margin:0;padding:0;}button{line-height:20px;font-size:15px;padding:0 10px;}
+﻿*{box-sizing:border-box;margin:0;padding:0;}button,input[type="submit"]{line-height:20px;font-size:15px;padding:0 10px;}.text-danger{color:#f00;}.text-success{color:#008000;}

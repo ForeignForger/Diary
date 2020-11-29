@@ -68,7 +68,22 @@
     function initActions() {
         $(".diary .controls .actions .note-create-button").click(function () {
             var noteType = $(this).attr("data-type");
-            popupService.showPopup("test text open popup for " + noteType);
+            noteService.getCreateForm(noteType, initPopup, function () { alert("Couldn't get popup data!"); });  
+        });
+    }
+
+    function initPopup(html) {
+        popupService.showPopup(html);
+        $(popupService.selectors.popupContent + " form").on('submit', function (e) {
+            var noteType = $(popupService.selectors.popupContent + " .form-body").attr("data-type");
+            var dataString = $(this).serialize();
+            noteService.createNote(noteType, dataString, function (html) {
+                initPopup(html);
+                loadDiary();
+            }, function () {
+                alert("Couldn't create " + noteType + "!");
+            });
+            e.preventDefault();
         });
     }
 

@@ -14,11 +14,10 @@
 .diary .diary-popup .popup-content {
   position: relative;
   top: calc((100% - 500px) / 2);
-  left: calc((100% - 300px) / 2);
-  width: 300px;
-  height: 500px;
+  left: calc((100% - 350px) / 2);
+  width: 350px;
   background-color: white;
-  border: 1px solid gray;
+  border: 2px solid gray;
 }
 .diary .diary-popup .popup-content .controls {
   padding: 0 5px;
@@ -32,6 +31,41 @@
 }
 .diary .diary-popup .popup-content .content {
   clear: both;
+}
+.diary .diary-popup .popup-content .content .form-body {
+  padding: 0px 10px 20px 10px;
+}
+.diary .diary-popup .popup-content .content .form-body .form-field {
+  margin-top: 15px;
+  min-height: 20px;
+  line-height: 20px;
+}
+.diary .diary-popup .popup-content .content .form-body .form-field:first-child {
+  margin-top: 20px;
+}
+.diary .diary-popup .popup-content .content .form-body .form-field .form-field-input {
+  float: right;
+  margin-right: 15px;
+  margin-bottom: 5px;
+  width: 200px;
+  height: 20px;
+  line-height: 20px;
+}
+.diary .diary-popup .popup-content .content .form-body .form-field .input-validation-error {
+  border-color: red;
+}
+.diary .diary-popup .popup-content .content .form-body .form-field .field-validation-error {
+  display: block;
+  margin-top: 5px;
+}
+.diary .diary-popup .popup-content .content .form-body .form-submit-button {
+  margin-top: 15px;
+}
+.diary .diary-popup .popup-content .form-success-body {
+  padding: 0px 10px 20px 10px;
+}
+.diary .diary-popup .popup-content .form-success-body .form-create_more-button {
+  margin-top: 10px;
 }
 .diary.list-mode {
   width: 400px;
@@ -101,7 +135,6 @@
 }
 .diary.list-mode .diary-body .diary-content .note-container {
   padding: 0 5px 0 5px;
-  min-height: 140px;
   width: 100%;
 }
 .diary.list-mode .diary-body .diary-content .note-container .note-header {
@@ -123,9 +156,15 @@
   font-weight: bold;
   line-height: 100%;
 }
+.diary.list-mode .diary-body .diary-content .note-container .note-content {
+  margin-top: 10px;
+}
 .diary.list-mode .diary-body .diary-content .note-container .note-content .note-field {
   display: block;
   margin-top: 5px;
+}
+.diary.list-mode .diary-body .diary-content .note-container .note-content .note-actions {
+  padding: 10px 0 20px 0;
 }
 .diary.list-mode .diary-body .diary-content .note-container.meeting {
   background-color: #b3ffe0;

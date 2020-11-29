@@ -20,9 +20,8 @@
             top: calc((100% - @diary-popup-height) / 2);
             left: calc((100% - @diary-popup-width) / 2);
             width: @diary-popup-width;
-            height: @diary-popup-height;
             background-color: white;
-            border: 1px solid gray;
+            border: 2px solid gray;
 
             .controls {
                 padding: 0 5px;
@@ -38,6 +37,50 @@
 
             .content {
                 clear: both;
+
+                .form-body {
+                    padding: 0px 10px 20px 10px;
+
+                    .form-field {
+                        margin-top: 15px;
+                        min-height: 20px;
+                        line-height: 20px;
+
+                        &:first-child {
+                            margin-top: 20px;
+                        }
+
+                        .form-field-input {
+                            float: right;
+                            margin-right: 15px;
+                            margin-bottom: 5px;
+                            width: 200px;
+                            height: 20px;
+                            line-height: 20px;
+                        }
+
+                        .input-validation-error {
+                            border-color: red;
+                        }
+
+                        .field-validation-error {
+                            display: block;
+                            margin-top: 5px;
+                        }
+                    }
+
+                    .form-submit-button {
+                        margin-top: 15px;
+                    }
+                }
+            }
+
+            .form-success-body {
+                padding: 0px 10px 20px 10px;
+
+                .form-create_more-button {
+                    margin-top: 10px;
+                }
             }
         }
     }
@@ -122,7 +165,6 @@
 
                 .note-container {
                     padding: 0 5px 0 5px;
-                    min-height: @diary-note-height;
                     width: 100%;
 
                     .note-header {
@@ -149,9 +191,15 @@
                     }
 
                     .note-content {
+                        margin-top: 10px;
+
                         .note-field {
                             display: block;
                             margin-top: 5px;
+                        }
+
+                        .note-actions {
+                            padding: 10px 0 20px 0;
                         }
                     }
 

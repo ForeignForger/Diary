@@ -1,0 +1,43 @@
+﻿@using DiaryMVC.Models;
+@model TaskModel
+
+@{
+    var created = (bool)ViewData["created"];
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-body" data-type="@NoteTypeModel.Task" @(created ? Html.Raw("style='display: none;'") : new HtmlString(String.Empty))>
+    <div class="form-field">
+        @Html.LabelFor(model => model.Title, $"Title:", htmlAttributes: new { @class = "form-field-label" })
+        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-field-input" } })
+        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-field">
+        @Html.LabelFor(model => model.DateTime, "Date:", htmlAttributes: new { @class = "form-field-label" })
+        @Html.EditorFor(model => model.DateTime, new { htmlAttributes = new { @class = "form-field-input", @type = "datetime-local" } })
+        @Html.ValidationMessageFor(model => model.DateTime, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-field">
+        @Html.LabelFor(model => model.DateTime, "Due:", htmlAttributes: new { @class = "form-field-label" })
+        @Html.EditorFor(model => model.DueDateTime, new { htmlAttributes = new { @class = "form-field-input", @type = "datetime-local" } })
+        @Html.ValidationMessageFor(model => model.DueDateTime, "", new { @class = "text-danger" })
+    </div>
+    <input type="submit" value="Create" class="form-submit-button" />
+</div>
+    if (created)
+    {
+        <div class="form-success-body">
+            <span class="text-success">Task is created successfully</span>
+            <button type="button" class="form-create_more-button">Create another one</button>
+            <script>
+                $(".form-success-body").click(function () {
+                    $(this).hide();
+                    $(".form-body").show();
+                });
+            </script>
+        </div>
+    }
+}

@@ -151,7 +151,10 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DiaryController.cs" />
+    <Compile Include="Controllers\MeetingController.cs" />
+    <Compile Include="Controllers\MemoController.cs" />
     <Compile Include="Controllers\NoteController.cs" />
+    <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -194,6 +197,10 @@
     <Content Include="Views\Shared\Diary\Controls.cshtml" />
     <Content Include="Views\Shared\Diary\ViewModes\List.cshtml" />
     <Content Include="Views\Shared\Diary\Note.cshtml" />
+    <Content Include="Views\Shared\Diary\Memo\CreateForm.cshtml" />
+    <Content Include="Views\Shared\Diary\DiaryPopup.cshtml" />
+    <Content Include="Views\Shared\Diary\Meeting\CreateForm.cshtml" />
+    <Content Include="Views\Shared\Diary\Task\CreateForm.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -203,6 +210,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Meeting\" />
+    <Folder Include="Views\Task\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DiaryDAL.csproj">

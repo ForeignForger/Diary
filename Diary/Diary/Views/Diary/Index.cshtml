@@ -16,16 +16,7 @@
 }
 
 <div class="diary @DiaryViewMode.List.Key">
-    <div class="diary-popup active">
-        <div class="popup-content">
-            <div class="controls">
-                <span class="popup-close-button">x</span>
-            </div>
-            <div class="content popup-type-class-name">
-                popup content
-            </div>
-        </div>
-    </div>
+    @Html.Partial("Diary/DiaryPopup")
     <div class="diary-header">
         @Html.Partial("Diary/Controls")
     </div>

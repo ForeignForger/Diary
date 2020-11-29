@@ -18,6 +18,7 @@
 
     return {
         init: init,
-        showPopup: showPopup
+        showPopup: showPopup,
+        selectors: selectors,
     }
 }
