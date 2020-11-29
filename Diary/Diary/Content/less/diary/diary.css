@@ -166,6 +166,12 @@
 .diary.list-mode .diary-body .diary-content .note-container .note-content .note-actions {
   padding: 10px 0 20px 0;
 }
+.diary.list-mode .diary-body .diary-content .note-container .note-content .note-actions button {
+  margin-right: 5px;
+  line-height: 18px;
+  font-size: 13px;
+  padding: 0 10px;
+}
 .diary.list-mode .diary-body .diary-content .note-container.meeting {
   background-color: #b3ffe0;
 }
@@ -173,7 +179,7 @@
   background-color: #ffe6b3;
 }
 .diary.list-mode .diary-body .diary-content .note-container.task {
-  background-color: #b3ecff;
+  background-color: #b3c6ff;
 }
 .diary.list-mode .diary-body .diary-content .list-mode .list-content .list-note {
   width: 100%;

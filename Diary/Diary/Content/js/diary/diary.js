@@ -68,17 +68,17 @@
     function initActions() {
         $(".diary .controls .actions .note-create-button").click(function () {
             var noteType = $(this).attr("data-type");
-            noteService.getCreateForm(noteType, initPopup, function () { alert("Couldn't get popup data!"); });  
+            noteService.getCreateForm(noteType, initCreatePopup, function () { alert("Couldn't get popup data!"); });  
         });
     }
 
-    function initPopup(html) {
+    function initCreatePopup(html) {
         popupService.showPopup(html);
         $(popupService.selectors.popupContent + " form").on('submit', function (e) {
             var noteType = $(popupService.selectors.popupContent + " .form-body").attr("data-type");
             var dataString = $(this).serialize();
             noteService.createNote(noteType, dataString, function (html) {
-                initPopup(html);
+                initCreatePopup(html);
                 loadDiary();
             }, function () {
                 alert("Couldn't create " + noteType + "!");
@@ -134,6 +134,29 @@
             };
 
             noteService.setStatus(id, status, onSuccess, onFail);
+        });
+
+        $(".note-update-button").click(function () {
+            var id = $(this).attr("data-id");
+            var noteType = $(this).attr("data-type");
+
+            noteService.getUpdateForm(noteType, id, initUpdatePopup, function () { alert("Couldn't get popup data!"); });  
+        });
+    }
+
+    function initUpdatePopup(html) {
+        popupService.showPopup(html);
+        $(popupService.selectors.popupContent + " form").on('submit', function (e) {
+            var dataString = $(this).serialize();
+            var noteType = $(popupService.selectors.popupContent + " .form-body").attr("data-type");
+
+            noteService.updateNote(noteType, dataString, function (html) {
+                initUpdatePopup(html);
+                loadDiary();
+            }, function () {
+                alert("Couldn't update note!");
+            });
+            e.preventDefault();
         });
     }
 

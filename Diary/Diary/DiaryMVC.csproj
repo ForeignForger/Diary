@@ -161,8 +161,11 @@
     <Compile Include="IoC\AutofacInitializer.cs" />
     <Compile Include="IoC\Modules\DalModule.cs" />
     <Compile Include="IoC\Modules\MvcModule.cs" />
+    <Compile Include="Mappers\MeetingMapper.cs" />
+    <Compile Include="Mappers\MemoMapper.cs" />
     <Compile Include="Mappers\NoteMapper.cs" />
     <Compile Include="Mappers\NoteTypeMapper.cs" />
+    <Compile Include="Mappers\TaskMapper.cs" />
     <Compile Include="Models\DiaryViewMode.cs" />
     <Compile Include="Models\ListViewModeModel.cs" />
     <Compile Include="Models\MeetingModel.cs" />
@@ -201,6 +204,9 @@
     <Content Include="Views\Shared\Diary\DiaryPopup.cshtml" />
     <Content Include="Views\Shared\Diary\Meeting\CreateForm.cshtml" />
     <Content Include="Views\Shared\Diary\Task\CreateForm.cshtml" />
+    <Content Include="Views\Shared\Diary\Memo\UpdateForm.cshtml" />
+    <Content Include="Views\Shared\Diary\Task\UpdateForm.cshtml" />
+    <Content Include="Views\Shared\Diary\Meeting\UpdateForm.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

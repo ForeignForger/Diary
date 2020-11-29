@@ -38,6 +38,12 @@ namespace DiaryDAL.Repositories.Impl
             return result;
         }
 
+        Note INoteRepository.Get(int id)
+        {
+            var note = _context.Notes.Find(id);
+            return note;
+        }
+
         Note INoteRepository.Create(Note note)
         {
             var newNote = _context.Notes.Add(note);

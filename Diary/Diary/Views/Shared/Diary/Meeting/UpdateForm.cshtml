@@ -1,0 +1,45 @@
+﻿@using DiaryMVC.Models;
+@model MeetingModel
+
+@{
+    var updated = (bool)ViewData["updated"];
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    if (updated)
+    {
+        <div class="form-success-body">
+            <span class="text-success">Meeting is updated successfully</span>
+        </div>
+    }
+    else
+    {
+        <div class="form-body" data-type="@NoteTypeModel.Meeting">
+            @Html.HiddenFor(model => model.Id)
+            <div class="form-field">
+                @Html.LabelFor(model => model.Title, $"Title:", htmlAttributes: new { @class = "form-field-label" })
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-field-input", @Value = Model.Title } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-field">
+                @Html.LabelFor(model => model.DateTime, "Date:", htmlAttributes: new { @class = "form-field-label" })
+                @Html.EditorFor(model => model.DateTime, new { htmlAttributes = new { @class = "form-field-input", @type = "datetime-local", @Value = Model.DateTime.ToString("yyyy-MM-ddThh:mm") } })
+                @Html.ValidationMessageFor(model => model.DateTime, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-field">
+                @Html.LabelFor(model => model.DueDateTime, "Due:", htmlAttributes: new { @class = "form-field-label" })
+                @Html.EditorFor(model => model.DueDateTime, new { htmlAttributes = new { @class = "form-field-input", @type = "datetime-local", @Value = Model.DueDateTime.ToString("yyyy-MM-ddThh:mm") } })
+                @Html.ValidationMessageFor(model => model.DueDateTime, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-field">
+                @Html.LabelFor(model => model.Place, "Place:", htmlAttributes: new { @class = "form-field-label" })
+                @Html.EditorFor(model => model.Place, new { htmlAttributes = new { @class = "form-field-input" }, @Value = Model.Place })
+                @Html.ValidationMessageFor(model => model.Place, "", new { @class = "text-danger" })
+            </div>
+            <input type="submit" value="Update" class="form-submit-button" />
+        </div>
+    }
+}

@@ -22,6 +22,7 @@
         <span class="note-field note-status">Status: @(Model.Done ? "Done": "Not Done")</span>
         <div class="note-actions">
             <button class="note-set_status-button" data-id="@Model.Id" data-status="@(Model.Done ? false: true)">Set as "@(Model.Done ? "Not Done": "Done")"</button>
+            <button class="note-update-button" data-id="@Model.Id" data-type="@Model.Type.ToString()">Update</button>
         </div>
     </div>
 </div>

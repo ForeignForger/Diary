@@ -64,10 +64,42 @@
         });
     }
 
+    function getUpdateForm(type, id, onSuccess, onFail) {
+        $.ajax({
+            url: type + "/Update",
+            data: {
+                id: id,
+            },
+            type: "GET",
+            success: function (response) {
+                onSuccess(response);
+            },
+            error: function () {
+                onFail();
+            }
+        });
+    }
+
+    function updateNote(type, dataString, onSuccess, onFail) {
+        $.ajax({
+            url: type + "/Update",
+            type: "POST",
+            data: dataString,
+            success: function (response) {
+                onSuccess(response);
+            },
+            error: function () {
+                onFail();
+            }
+        });
+    }
+
     return {
         deleteNote: deleteNote,
         setStatus: setStatus,
         getCreateForm: getCreateForm,
         createNote: createNote,
+        getUpdateForm: getUpdateForm,
+        updateNote: updateNote,
     };
 }

@@ -30,6 +30,23 @@ namespace DiaryMVCTests.Services
         }
 
         [TestMethod]
+        public void ShouldGetNoteById()
+        {
+            var notes = new List<Note>() { new Note() { Id = 1, Title = "test title 1" }, new Note() { Id = 2, Title = "another test title 2" } };
+            var id = 2;
+
+            var noteRepositoryMock = MockRepository.GenerateMock<INoteRepository>();
+            noteRepositoryMock.Expect(repo => repo.Get(id)).Return(notes[1]);
+
+            INoteService noteService = new NoteService(noteRepositoryMock);
+
+            var resultNote = noteService.Get(id);
+
+            Assert.AreEqual(notes[1], resultNote, "should return correct note");
+            noteRepositoryMock.VerifyAllExpectations();
+        }
+
+        [TestMethod]
         public void ShouldDeleteNote()
         {
             var id = 1;

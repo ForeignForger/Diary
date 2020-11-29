@@ -21,7 +21,7 @@
         @Html.ValidationMessageFor(model => model.DateTime, "", new { @class = "text-danger" })
     </div>
     <div class="form-field">
-        @Html.LabelFor(model => model.DateTime, "Due:", htmlAttributes: new { @class = "form-field-label" })
+        @Html.LabelFor(model => model.DueDateTime, "Due:", htmlAttributes: new { @class = "form-field-label" })
         @Html.EditorFor(model => model.DueDateTime, new { htmlAttributes = new { @class = "form-field-input", @type = "datetime-local" } })
         @Html.ValidationMessageFor(model => model.DueDateTime, "", new { @class = "text-danger" })
     </div>

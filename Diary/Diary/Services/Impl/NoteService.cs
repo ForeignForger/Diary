@@ -29,6 +29,12 @@ namespace DiaryMVC.Services.Impl
             return notes;
         }
 
+        Note INoteService.Get(int id)
+        {
+            var note = _noteRepository.Get(id);
+            return note;
+        }
+
         bool INoteService.Delete(int id)
         {
             var result = _noteRepository.Delete(id);

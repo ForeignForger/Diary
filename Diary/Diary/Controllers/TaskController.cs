@@ -1,4 +1,5 @@
-﻿using DiaryMVC.Models;
+﻿using DiaryMVC.Mappers;
+using DiaryMVC.Models;
 using DiaryMVC.Services;
 using System.Web.Mvc;
 
@@ -7,9 +8,11 @@ namespace DiaryMVC.Controllers
     public class TaskController : Controller
     {
         private readonly ITaskService _taskService;
-        public TaskController(ITaskService meetingService)
+        private readonly INoteService _noteService;
+        public TaskController(ITaskService meetingService, INoteService noteService)
         {
             _taskService = meetingService;
+            _noteService = noteService;
         }
 
         public ActionResult Create()
@@ -37,6 +40,36 @@ namespace DiaryMVC.Controllers
 
             ViewData["created"] = created;
             return PartialView("Diary/Task/CreateForm", model);
+        }
+
+        public ActionResult Update(int id)
+        {
+            ViewData["updated"] = false;
+            var note = _noteService.Get(id);
+            var model = TaskMapper.Map(note);
+
+            return PartialView("Diary/Task/UpdateForm", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Update(TaskModel model)
+        {
+            bool updated;
+            Validate(model);
+
+            if (ModelState.IsValid)
+            {
+                updated = _taskService.Update(model);
+            }
+            else
+            {
+                updated = false;
+            }
+
+            ViewData["updated"] = updated;
+
+            return PartialView("Diary/Task/UpdateForm", model);
         }
 
         private void Validate(TaskModel model)

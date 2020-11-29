@@ -17,6 +17,13 @@ namespace DiaryMVC.Services
         List<Note> GetAll(DateTime? from, DateTime? to, List<NoteTypeModel> noteTypes);
 
         /// <summary>
+        /// Gets note by Id
+        /// </summary>
+        /// <param name="id">note id</param>
+        /// <returns></returns>
+        Note Get(int id);
+
+        /// <summary>
         /// Deletes note from database by Id
         /// </summary>
         /// <param name="id">note id</param>
