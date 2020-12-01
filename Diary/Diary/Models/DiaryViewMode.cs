@@ -4,15 +4,19 @@ namespace DiaryMVC.Models
 {
     public class DiaryViewMode
     {
-        public static readonly DiaryViewMode List = new DiaryViewMode("list-mode");
+        public static readonly DiaryViewMode List = new DiaryViewMode("list-mode", "List");
+        public static readonly DiaryViewMode Day = new DiaryViewMode("day-mode", "Day");
 
-        public static readonly List<DiaryViewMode> All = new List<DiaryViewMode>() { List };
+        public static readonly List<DiaryViewMode> All = new List<DiaryViewMode>() { List, Day };
 
         public string Key { get; }
 
-        private DiaryViewMode(string key)
+        public string Name { get; set; }
+
+        private DiaryViewMode(string key, string name)
         {
             Key = key;
+            Name = name;
         }
 
         public static DiaryViewMode GetMode(string key)

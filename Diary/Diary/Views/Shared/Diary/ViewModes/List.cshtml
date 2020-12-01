@@ -1,6 +1,7 @@
-﻿@model DiaryMVC.Models.ListViewModeModel
+﻿@using DiaryMVC.Models;
+@model ListViewModeModel
 
-<div class="list-mode">
+<div class="@DiaryViewMode.List.Key">
     <div class="list-content">
         @foreach (var note in Model.Notes)
         {

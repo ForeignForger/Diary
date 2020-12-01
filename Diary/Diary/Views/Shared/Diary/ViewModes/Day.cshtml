@@ -1,0 +1,18 @@
+﻿@using DiaryMVC.Models;
+@model DayViewModeModel
+
+<div class="@DiaryViewMode.Day.Key">
+    <div class="day-header">Selected date: @(Model.SelectedDate.ToString("dd/MM/yyyy"))</div>
+    <div class="day-content">
+        @foreach (var note in Model.Notes)
+        {
+            <div class="note day-note">
+                @Html.Partial("Diary/Note", note)
+            </div>
+        }
+    </div>
+    <div class="day-actions">
+        <button class="day-change-date" data-value="-1">Previous day</button>
+        <button class="day-change-date" data-value="1">Next day</button>
+    </div>
+</div>

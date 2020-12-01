@@ -123,10 +123,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\js\diary\viewModes\dayViewMode.js" />
     <Content Include="Content\js\diary\diary.js" />
     <Content Include="Content\js\diary\diaryPopupService.js" />
+    <Content Include="Content\js\diary\viewModes\listViewMode.js" />
     <Content Include="Content\js\diary\noteService.js" />
     <Content Include="Content\js\libraries\jquery.min.js" />
+    <Content Include="Content\js\libraries\js.cookie.min.js" />
     <Content Include="Content\less\diary\diary.css">
       <DependentUpon>diary.less</DependentUpon>
     </Content>
@@ -166,6 +169,8 @@
     <Compile Include="Mappers\NoteMapper.cs" />
     <Compile Include="Mappers\NoteTypeMapper.cs" />
     <Compile Include="Mappers\TaskMapper.cs" />
+    <Compile Include="Models\DayViewModeModel.cs" />
+    <Compile Include="Models\DiaryModel.cs" />
     <Compile Include="Models\DiaryViewMode.cs" />
     <Compile Include="Models\ListViewModeModel.cs" />
     <Compile Include="Models\MeetingModel.cs" />
@@ -207,6 +212,7 @@
     <Content Include="Views\Shared\Diary\Memo\UpdateForm.cshtml" />
     <Content Include="Views\Shared\Diary\Task\UpdateForm.cshtml" />
     <Content Include="Views\Shared\Diary\Meeting\UpdateForm.cshtml" />
+    <Content Include="Views\Shared\Diary\ViewModes\Day.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

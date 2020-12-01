@@ -1,5 +1,7 @@
 ﻿@using DiaryMVC.Models;
 
+@model DiaryModel
+
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -13,12 +15,14 @@
     <script src="@Url.Content("Content/js/diary/diary.js")"></script>
     <script src="@Url.Content("Content/js/diary/diaryPopupService.js")"></script>
     <script src="@Url.Content("Content/js/diary/noteService.js")"></script>
+    <script src="@Url.Content("Content/js/diary/viewModes/dayViewMode.js")"></script>
+    <script src="@Url.Content("Content/js/diary/viewModes/listViewMode.js")"></script>
 }
 
-<div class="diary @DiaryViewMode.List.Key">
+<div class="diary @Model.Mode.Key">
     @Html.Partial("Diary/DiaryPopup")
     <div class="diary-header">
-        @Html.Partial("Diary/Controls")
+        @Html.Partial("Diary/Controls", Model);
     </div>
     <div class="diary-body">
         <div class="diary-content">
@@ -26,7 +30,7 @@
     </div>
 </div>
 <script>
-    var diary = new Diary("@DiaryViewMode.List.Key", ".diary", ".diary .diary-content");
+    var diary = new Diary("@Model.Mode.Key", ".diary", ".diary .diary-content");
     diary.init();
 </script>
 

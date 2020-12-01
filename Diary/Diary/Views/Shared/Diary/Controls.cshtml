@@ -1,12 +1,14 @@
 ﻿@using DiaryMVC.Models;
 
+@model DiaryModel
+
 <div class="controls">
     <div class="modes">
         <select name="view-mode-select" id="view-mode-select">
-            <option value="@DiaryViewMode.List.Key">List</option>
-            <option value="day-mode">Day</option>
-            <option value="week-mode">Week</option>
-            <option value="month-mode">Month</option>
+            @foreach (var mode in DiaryViewMode.All)
+            {
+                <option value="@mode.Key" @(mode.Equals(Model.Mode) ? "selected" : String.Empty)>@mode.Name</option>
+            }
         </select>
     </div>
     <div class="filters">
@@ -17,7 +19,7 @@
             <span>To:</span><input type="date" id="to-date" value="">
         </div>
         <div class="filter-note-type">
-            <span>Note Types:</span><br/>
+            <span>Note Types:</span><br />
             <div class="checkboxes">
                 <input type="checkbox" name="note-types" value="memo" />
                 <label>Memo</label>
@@ -25,7 +27,7 @@
                 <label>Task</label>
                 <input type="checkbox" name="note-types" value="meeting" />
                 <label>Meeting</label>
-            </div>           
+            </div>
         </div>
         <button class="filter-button">Filter</button>
     </div>

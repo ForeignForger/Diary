@@ -85,6 +85,73 @@
         }
     }
 
+    .diary-body {
+        .diary-content {
+            height: 100%;
+            width: 100%;
+            overflow-y: scroll;
+
+            .note-container {
+                padding: 0 5px 0 5px;
+                width: 100%;
+
+                .note-header {
+                    width: 100%;
+                    border-bottom: 3px dotted gray;
+                    padding: 5px 0px;
+
+                    .note-title {
+                        font-weight: bold;
+                    }
+
+                    .note-type {
+                        float: right;
+                    }
+
+                    .note-delete-button {
+                        float: right;
+                        margin-left: 10px;
+                        cursor: pointer;
+                        color: gray;
+                        font-weight: bold;
+                        line-height: 100%;
+                    }
+                }
+
+                .note-content {
+                    margin-top: 10px;
+
+                    .note-field {
+                        display: block;
+                        margin-top: 5px;
+                    }
+
+                    .note-actions {
+                        padding: 10px 0 20px 0;
+
+                        button {
+                            margin-right: 5px;
+                            line-height: 18px;
+                            font-size: 13px;
+                            padding: 0 10px;
+                        }
+                    }
+                }
+
+                &.meeting {
+                    background-color: @diary-meeting-background-color;
+                }
+
+                &.memo {
+                    background-color: @diary-memo-background-color;
+                }
+
+                &.task {
+                    background-color: @diary-task-background-color;
+                }
+            }
+        }
+    }
 
     &.list-mode {
         width: @diary-list-mode-width;
@@ -160,68 +227,6 @@
         .diary-body {
             .diary-content {
                 height: @diary-height - @diary-list-mode-header-height - 2px;
-                width: 100%;
-                overflow-y: scroll;
-
-                .note-container {
-                    padding: 0 5px 0 5px;
-                    width: 100%;
-
-                    .note-header {
-                        width: 100%;
-                        border-bottom: 3px dotted gray;
-                        padding: 5px 0px;
-
-                        .note-title {
-                            font-weight: bold;
-                        }
-
-                        .note-type {
-                            float: right;
-                        }
-
-                        .note-delete-button {
-                            float: right;
-                            margin-left: 10px;
-                            cursor: pointer;
-                            color: gray;
-                            font-weight: bold;
-                            line-height: 100%;
-                        }
-                    }
-
-                    .note-content {
-                        margin-top: 10px;
-
-                        .note-field {
-                            display: block;
-                            margin-top: 5px;
-                        }
-
-                        .note-actions {
-                            padding: 10px 0 20px 0;
-
-                            button {
-                                margin-right: 5px;
-                                line-height: 18px;
-                                font-size: 13px;
-                                padding: 0 10px;
-                            }
-                        }
-                    }
-
-                    &.meeting {
-                        background-color: @diary-meeting-background-color;
-                    }
-
-                    &.memo {
-                        background-color: @diary-memo-background-color;
-                    }
-
-                    &.task {
-                        background-color: @diary-task-background-color;
-                    }
-                }
 
                 .list-mode {
                     .list-content {
@@ -232,6 +237,119 @@
                             &:last-of-type {
                                 border-bottom: 0px;
                             }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.day-mode {
+        width: @diary-day-mode-width;
+
+        .diary-popup {
+            height: @diary-height - 2px;
+            width: @diary-day-mode-width - 2px;
+        }
+
+        .diary-header {
+            height: @diary-day-mode-controls-height;
+            border-bottom: 1px solid black;
+
+            .controls {
+                height: 100%;
+                width: 100%;
+
+                .modes {
+                    width: 100%;
+                    padding: 10px 0 5px 10px;
+                    border-bottom: 2px solid gray;
+                }
+
+                .filters {
+                    width: 100%;
+                    border-bottom: 2px solid gray;
+                    padding-bottom: 12px;
+
+                    .filter-from-date, .filter-to-date {
+                        height: 20px;
+                        line-height: 20px;
+                        margin-top: 12px;
+                        margin-left: 10px;
+                        width: 200px;
+
+                        span {
+                            float: left;
+                        }
+
+                        input {
+                            float: right;
+                        }
+                    }
+
+                    .filter-note-type {
+                        clear: both;
+                        margin-top: 12px;
+                        margin-left: 10px;
+
+                        .checkboxes {
+                            margin-left: 10px;
+                            margin-top: 5px;
+                        }
+                    }
+
+                    .filter-button {
+                        margin-left: 5px;
+                        margin-top: 10px;
+                    }
+                }
+
+                .actions {
+                    padding-top: 12px;
+
+                    button {
+                        margin-left: 5px;
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+
+        .diary-body {
+            .diary-content {
+                height: @diary-height - @diary-day-mode-controls-height - 2px;
+                overflow-y: unset;
+
+                .day-mode {
+                    .day-header {
+                        height: @diary-day-mode-header-height;
+                        border-bottom: 1px solid black;
+                        line-height: @diary-day-mode-header-height;
+                        font-size: 17px;
+                        font-weight: bold;
+                    }
+
+                    .day-content {
+                        height: @diary-day-mode-content-height;
+                        overflow-y: scroll;
+
+                        .day-note {
+                            width: 100%;
+                            border-bottom: 1px solid black;
+
+                            &:last-of-type {
+                                border-bottom: 0px;
+                            }
+                        }
+                    }
+
+                    .day-actions {
+                        height: @diary-day-mode-actions-height;
+                        border-top: 1px solid black;
+                        padding: 13px 10px;
+
+                        .day-change-date {
+                            margin-right: 10px;
                         }
                     }
                 }

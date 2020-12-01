@@ -1,6 +1,6 @@
-﻿Diary = function (mode, diaryContainer, contentContainer) {
+﻿Diary = function (modeKey, diaryContainer, contentContainer) {
+    var self = this;
     var settings = {
-        viewMode: mode,
         filters: {
             from: null,
             to: null,
@@ -11,26 +11,61 @@
         url: "Diary/GetDiaryContent"
     };
 
+    var viewMode = selectViewMode(modeKey);
     var noteService = new NoteService();
     var popupService = new DiaryPopupService;
 
-    function init() {
+    this.init = function () {
         popupService.init();
+        viewMode.init();
         initViewModeSelection();
         initFilters();
         initActions();
-        loadDiary();
+        self.loadDiary();
+    };
+
+    this.loadDiary = function loadDiary() {
+        var data = {
+            mode: viewMode.key,
+            from: settings.filters.from,
+            to: settings.filters.to,
+            noteTypes: settings.filters.noteTypes
+        };
+        var jsonData = JSON.stringify(data);
+
+        $.ajax({
+            url: settings.url,
+            type: "POST",
+            contentType: "application/json",
+            data: jsonData,
+            success: function (response) {
+                insertDiaryContent(response)
+            },
+            error: function () {
+                alert("Couldn't change view mode!");
+            }
+        });
+    };
+
+    function selectViewMode(modeKey) {
+        if (modeKey == "day-mode") {
+            return new DayViewMode(self);
+        } else if (modeKey == "list-mode") {
+            return new ListViewMode(self);
+        }
+
+        return undefined;
     }
 
     function initViewModeSelection() {
         $("#view-mode-select").change(function () {
             var optionSelected = $("option:selected", this);
-            var newMode = optionSelected[0].value;
-            var oldMode = settings.viewMode;           
-            settings.viewMode = newMode;
-            loadDiary();
+            var newModeKey = optionSelected[0].value;
+            var oldModeKey = viewMode ? viewMode.key : "";
+            viewMode = selectViewMode(newModeKey);
+            self.loadDiary();
 
-            $(settings.diaryContainer).removeClass(oldMode).addClass(newMode);
+            $(settings.diaryContainer).removeClass(oldModeKey).addClass(newModeKey);
         });
     }
 
@@ -60,7 +95,7 @@
         });
 
         $(".filter-button").click(function () {
-            loadDiary();
+            self.loadDiary();
         });
 
     }
@@ -79,34 +114,11 @@
             var dataString = $(this).serialize();
             noteService.createNote(noteType, dataString, function (html) {
                 initCreatePopup(html);
-                loadDiary();
+                self.loadDiary();
             }, function () {
                 alert("Couldn't create " + noteType + "!");
             });
             e.preventDefault();
-        });
-    }
-
-    function loadDiary() {
-        var data = {
-            mode: settings.viewMode,
-            from: settings.filters.from,
-            to: settings.filters.to,
-            noteTypes: settings.filters.noteTypes
-        };
-        var jsonData = JSON.stringify(data);
-
-        $.ajax({
-            url: settings.url,
-            type: "POST",
-            contentType: "application/json",
-            data: jsonData,           
-            success: function (response) {
-                insertDiaryContent(response)
-            },
-            error: function () {
-                alert("Couldn't change view mode!");
-            }
         });
     }
 
@@ -115,7 +127,7 @@
 
         $(".note-delete-button").click(function () {
             var id = $(this).attr("data-id");
-            var onSuccess = loadDiary;
+            var onSuccess = self.loadDiary;
 
             var onFail = function () {
                 alert("Couldn't delete note!");
@@ -127,7 +139,7 @@
         $(".note-set_status-button").click(function () {
             var id = $(this).attr("data-id");
             var status = $(this).attr("data-status");
-            var onSuccess = loadDiary;
+            var onSuccess = self.loadDiary;
 
             var onFail = function () {
                 alert("Couldn't update status!");
@@ -142,6 +154,8 @@
 
             noteService.getUpdateForm(noteType, id, initUpdatePopup, function () { alert("Couldn't get popup data!"); });  
         });
+
+        viewMode.setup(this);
     }
 
     function initUpdatePopup(html) {
@@ -152,15 +166,11 @@
 
             noteService.updateNote(noteType, dataString, function (html) {
                 initUpdatePopup(html);
-                loadDiary();
+                self.loadDiary();
             }, function () {
                 alert("Couldn't update note!");
             });
             e.preventDefault();
         });
     }
-
-    return {
-        init: init
-    };
 };
