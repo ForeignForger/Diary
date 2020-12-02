@@ -1,16 +1,11 @@
 ﻿ListViewMode = function (diary) {
-    var modeKey = "list-mode";
+    this.key = "list-mode";
+
     var diary = diary;
 
-    function setup() {
-    }
+    this.setup = function() {
+    };
 
-    function init() {
-    }
-
-    return {
-        key: modeKey,
-        setup: setup,
-        init: init,
-    }
+    this.init = function() {
+    };
 };

@@ -4,9 +4,9 @@
         setStatus: "Note/SetStatus"
     };
 
-    function deleteNote(id, onSuccess, onFail) {
+    this.deleteNote = function(id, onSuccess, onFail) {
         $.ajax({
-            url: urls.delete,     
+            url: urls.delete,
             type: "GET",
             data: {
                 noteId: id
@@ -18,9 +18,9 @@
                 onFail();
             }
         });
-    }
+    };
 
-    function setStatus(id, status, onSuccess, onFail) {
+    this.setStatus = function(id, status, onSuccess, onFail) {
         $.ajax({
             url: urls.setStatus,
             type: "GET",
@@ -35,9 +35,9 @@
                 onFail();
             }
         });
-    }
+    };
 
-    function getCreateForm(type ,onSuccess, onFail) {
+    this.getCreateForm = function(type, onSuccess, onFail) {
         $.ajax({
             url: type + "/Create",
             type: "GET",
@@ -48,9 +48,9 @@
                 onFail();
             }
         });
-    }
+    };
 
-    function createNote(type, dataString, onSuccess, onFail) {
+    this.createNote = function(type, dataString, onSuccess, onFail) {
         $.ajax({
             url: type + "/Create",
             type: "POST",
@@ -62,9 +62,9 @@
                 onFail();
             }
         });
-    }
+    };
 
-    function getUpdateForm(type, id, onSuccess, onFail) {
+    this.getUpdateForm = function(type, id, onSuccess, onFail) {
         $.ajax({
             url: type + "/Update",
             data: {
@@ -78,9 +78,9 @@
                 onFail();
             }
         });
-    }
+    };
 
-    function updateNote(type, dataString, onSuccess, onFail) {
+    this.updateNote = function(type, dataString, onSuccess, onFail) {
         $.ajax({
             url: type + "/Update",
             type: "POST",
@@ -92,14 +92,5 @@
                 onFail();
             }
         });
-    }
-
-    return {
-        deleteNote: deleteNote,
-        setStatus: setStatus,
-        getCreateForm: getCreateForm,
-        createNote: createNote,
-        getUpdateForm: getUpdateForm,
-        updateNote: updateNote,
     };
-}
+};

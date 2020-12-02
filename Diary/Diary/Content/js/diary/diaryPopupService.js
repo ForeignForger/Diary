@@ -1,24 +1,20 @@
 ﻿DiaryPopupService = function () {
-    var selectors = {
+    var self = this;
+    self.selectors = {
         popup: ".diary-popup",
         popupContent: ".diary-popup .popup-content .content",
-    }
-    function init() {
-        $(selectors.popup).removeClass("active");
+    };
+
+    self.init = function () {
+        $(self.selectors.popup).removeClass("active");
         $(".popup-close-button").click(function () {
-            $(selectors.popup).removeClass("active");
-            $(selectors.popupContent).html();
+            $(self.selectors.popup).removeClass("active");
+            $(self.selectors.popupContent).html();
         });
-    }
+    };
 
-    function showPopup(content) {
-        $(selectors.popup).addClass("active");
-        $(selectors.popupContent).html(content);
-    }
-
-    return {
-        init: init,
-        showPopup: showPopup,
-        selectors: selectors,
-    }
-}
+    self.showPopup = function (content) {
+        $(self.selectors.popup).addClass("active");
+        $(self.selectors.popupContent).html(content);
+    };
+};
